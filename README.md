@@ -137,6 +137,41 @@ The platform is being implemented incrementally through the following major mile
 13. Analytics and Dashboard
 14. Portfolio Packaging
 
+## Development Workflow
+
+Repository changes are developed on short-lived working branches and integrated through pull requests into the protected `main` branch.
+
+Current repository workflow:
+
+```text
+Working Branch
+      |
+      v
+Local Development
+      |
+      v
+Commit and Push
+      |
+      v
+Pull Request
+      |
+      v
+Validation
+      |
+      v
+Protected main
+```
+
+Branch naming conventions:
+
+* `feature/...` for new engineering capabilities
+* `fix/...` for bug fixes
+* `docs/...` for documentation changes
+* `chore/...` for repository and tooling maintenance
+
+The target CI/CD model will later extend this workflow to include automated validation, development and test deployments, and controlled production promotion.
+
+
 ## Project Status
 
 **Current Phase:** Foundation and Environment
