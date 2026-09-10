@@ -1,0 +1,105 @@
+﻿# ---------------------------------------------------------
+# Python
+# ---------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python tooling / test artifacts
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ---------------------------------------------------------
+# VS Code / IDE
+# ---------------------------------------------------------
+.vscode/
+.idea/
+
+# ---------------------------------------------------------
+# Environment variables / secrets
+# ---------------------------------------------------------
+.env
+.env.*
+*.secret
+*.secrets
+secrets/
+
+# ---------------------------------------------------------
+# Databricks
+# ---------------------------------------------------------
+.databricks/
+.databricks-connect
+.bundle/
+
+# ---------------------------------------------------------
+# Terraform / Infrastructure
+# ---------------------------------------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+crash.*.log
+
+# Terraform variable files may contain sensitive values
+*.tfvars
+*.tfvars.json
+
+# ---------------------------------------------------------
+# Azure / deployment local artifacts
+# ---------------------------------------------------------
+.azure/
+deployment-output/
+artifacts/
+
+# ---------------------------------------------------------
+# Generated / large data
+# ---------------------------------------------------------
+data/
+generated-data/
+output/
+tmp/
+temp/
+
+# Keep only intentionally committed synthetic samples
+sample-data/generated/
+
+# ---------------------------------------------------------
+# Kafka local runtime artifacts
+# ---------------------------------------------------------
+kafka/logs/
+kafka/data/
+kafka/tmp/
+
+# ---------------------------------------------------------
+# Logs
+# ---------------------------------------------------------
+*.log
+logs/
+
+# ---------------------------------------------------------
+# Operating system files
+# ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------
+# Jupyter
+# ---------------------------------------------------------
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------
+# Build / packaging
+# ---------------------------------------------------------
+build/
+dist/
+*.egg-info/
