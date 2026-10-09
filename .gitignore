@@ -20,7 +20,9 @@ htmlcov/
 # ---------------------------------------------------------
 # VS Code / IDE
 # ---------------------------------------------------------
-.vscode/
+# VS Code: ignore local settings except shared workspace configuration
+.vscode/*
+!.vscode/settings.json
 .idea/
 
 # ---------------------------------------------------------

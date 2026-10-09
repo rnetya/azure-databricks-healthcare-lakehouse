@@ -1,0 +1,7 @@
+# M1.11 - Local development dependencies
+# Python 3.12
+
+pytest==9.1.1
+ruff==0.16.10
+databricks-sdk==0.150.0
+databricks-connect==17.3.14
