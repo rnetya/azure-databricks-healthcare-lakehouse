@@ -8,6 +8,41 @@ The platform demonstrates how heterogeneous batch, database, API, and streaming 
 
 The project uses synthetic healthcare data only. No real Protected Health Information (PHI) is used.
 
+## Implementation Status
+
+**Current phase:** M1.13 — Foundation Documentation, Evidence & Freeze
+
+The Azure and Databricks foundation has been established and validated through M1.12. The project is now consolidating architecture documentation, validation evidence, and implementation readiness before beginning synthetic healthcare data development.
+
+### Completed Foundation Capabilities
+
+| Area | Implemented and Validated |
+|---|---|
+| Azure environment | Dedicated DEV subscription, resource group, East US region, naming standards, and budget alerts |
+| ADLS Gen2 | Hierarchical namespace storage, containers, and landing directory structure |
+| Azure Databricks | Premium workspace with Serverless Spark and SQL capabilities |
+| Unity Catalog | `healthcare_dev` catalog, Medallion schemas, governance baseline, and external volume |
+| Identity and security | Microsoft Entra ID, Azure Key Vault, Databricks secret scope, and runtime service principal configuration |
+| Local development | Python 3.12, VS Code, Databricks CLI/SDK, Databricks Connect, pytest, and Ruff |
+| Connectivity | Databricks APIs, Serverless Spark, Unity Catalog, and governed ADLS file operations |
+| Source control | Protected `main` branch, feature branches, pull requests, and documented Git workflow |
+
+### Upcoming Engineering Work
+
+The next phase will introduce synthetic healthcare datasets, followed by batch and incremental ingestion, transformation, data quality, streaming, analytical products, orchestration, and automated deployment.
+
+These processing capabilities are planned and are not yet represented as completed implementations.
+
+### Foundation Evidence
+
+- [Architecture Overview](architecture/architecture-overview.md)
+- [Foundation Architecture Diagram](architecture/diagrams/foundation-architecture.md)
+- [Connectivity Validation](docs/connectivity-validation.md)
+- [Local Development and Testing](docs/local-development.md)
+- [Unity Catalog Foundation](docs/unity-catalog-foundation.md)
+- [Identity and Key Vault Foundation](docs/keyvault-identity-foundation.md)
+- [Azure Cost Guardrails](docs/azure-cost-guardrails.md)
+
 ## Business Scenario
 
 A healthcare organization receives member, eligibility, claims, provider, service-event, and reference data from multiple internal and external systems.
@@ -32,7 +67,9 @@ The platform follows the logical processing pattern:
 
 The architecture is designed around Azure Databricks, Delta Lake, Unity Catalog, ADLS Gen2, Lakeflow, Apache Spark, and supporting Azure services.
 
-Detailed architecture diagrams and Architecture Decision Records (ADRs) will be maintained under the `architecture/` directory.
+The [Architecture Overview](architecture/architecture-overview.md) describes the implemented Azure foundation and planned healthcare processing architecture. The [Foundation Architecture Diagram](architecture/diagrams/foundation-architecture.md) provides a visual representation of both.
+
+Detailed Architecture Decision Records (ADRs) and healthcare data models will be added as the relevant engineering milestones are implemented.
 
 ## Data Sources
 
@@ -92,35 +129,38 @@ docs/                Engineering, operational, and portfolio documentation
 
 ## CI/CD Strategy
 
-The planned delivery model separates source-control validation from environment deployment.
+**Current state:** Git feature branches, pull requests, protected `main`, and local validation are implemented.
 
-Feature branches may be validated and deployed to development and test targets. Production deployments must originate from the protected `main` branch after successful validation and pull-request approval.
+**Planned state:** GitHub Actions, automated testing, Databricks deployment automation, and controlled environment promotion.
+
+The intended delivery workflow is:
 
 ```text
 Feature Branch
       |
       v
-     CI
+Automated CI Validation
       |
       v
-     DEV
+DEV Deployment / Validation
       |
       v
-    TEST
+Pull Request Review and Approval
       |
       v
-PR Approval
+Merge to Protected main
       |
       v
-Merge to main
-      |
-      v
-    PROD
+Controlled UAT / PRD Promotion
 ```
+
+This represents the target CI/CD architecture, not an existing automated deployment pipeline.
+
+Environment deployment, release approvals, and promotion controls will be implemented and validated during the CI/CD milestone.
 
 ## Implementation Roadmap
 
-The platform is being implemented incrementally through the following major milestones:
+The following is a high-level delivery roadmap. Detailed milestone definitions and sequencing are maintained separately in the project implementation plan.:
 
 1. Foundation and Environment
 2. Synthetic Data Platform
@@ -174,11 +214,15 @@ The target CI/CD model will later extend this workflow to include automated vali
 
 ## Project Status
 
-**Current Phase:** Foundation and Environment
+**Current milestone:** M1.13 — Foundation Documentation, Evidence & Freeze
 
-The architecture and scope blueprint has been completed. Repository and platform foundations are currently being established before Azure data-platform resources and processing pipelines are implemented.
+**Completed:** M1.1–M1.12 — Azure environment, storage, Databricks workspace, Unity Catalog, identity foundation, local development tooling, and connectivity validation.
 
-Implementation evidence, architecture diagrams, technical decisions, test results, and demonstration artifacts will be added progressively as each milestone is completed.
+**In progress:** Architecture consolidation, foundation documentation, reproducibility review, and final foundation freeze.
+
+**Next phase:** Synthetic Healthcare Data Platform.
+
+The project currently has a validated cloud and development foundation. Healthcare ingestion pipelines, Silver and Gold processing, streaming workloads, automated CI/CD, and infrastructure-as-code remain planned engineering deliverables.
 
 ---
 
