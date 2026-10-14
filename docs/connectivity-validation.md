@@ -4,7 +4,7 @@
 
 **Environment:** DEV
 
-**Status:** Validation completed; documentation and PR pending
+**Status:** Validation completed; merged into main via PR #12
 
 **Validation date:** October 14, 2026
 
