@@ -6,6 +6,7 @@ from pathlib import Path
 
 from data_generation.config import load_config
 from data_generation.generator import GeneratorEngine
+from data_generation.member import generate_member
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -49,9 +50,20 @@ def main(argv: list[str] | None = None) -> int:
 
     engine = GeneratorEngine(config, Path.cwd())
 
-    # Dataset implementations are registered here as they are built.
-    # M2.4 will introduce the Member and Eligibility generators.
+    # Register implemented dataset generators.
+    engine.register(
+        "member",
+        lambda rng, output_dir, settings: generate_member(
+            rng,
+            output_dir,
+            {
+                **settings,
+                "snapshot_date": config["snapshot_date"],
+            },
+        ),
+    )
 
+    # Validate requested dataset.
     if args.dataset not in config["datasets"]:
         parser.error(f"Unknown dataset: {args.dataset}")
 
@@ -61,7 +73,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.dataset not in engine.registry:
         parser.error(f"Generator not yet implemented for dataset: {args.dataset}")
 
+    # Execute registered generator.
     result = engine.run(args.dataset)
+
     print(f"Generated: {result}")
     return 0
 
