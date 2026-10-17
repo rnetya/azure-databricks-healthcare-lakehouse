@@ -2,6 +2,7 @@
   "project": "azure-databricks-healthcare-lakehouse",
   "environment": "dev",
   "random_seed": 42,
+  "snapshot_date": "2026-10-17",
   "output_directory": "sample-data/generated",
   "datasets": {
     "member": {
