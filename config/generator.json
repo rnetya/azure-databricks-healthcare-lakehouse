@@ -1,0 +1,33 @@
+﻿{
+  "project": "azure-databricks-healthcare-lakehouse",
+  "environment": "dev",
+  "random_seed": 42,
+  "output_directory": "sample-data/generated",
+  "datasets": {
+    "member": {
+      "enabled": true,
+      "record_count": 10000,
+      "format": "csv"
+    },
+    "eligibility": {
+      "enabled": true,
+      "format": "parquet"
+    },
+    "claims": {
+      "enabled": true,
+      "format": "sqlserver"
+    },
+    "provider": {
+      "enabled": true,
+      "format": "json"
+    },
+    "service_events": {
+      "enabled": true,
+      "format": "avro"
+    },
+    "reference": {
+      "enabled": true,
+      "format": "csv"
+    }
+  }
+}

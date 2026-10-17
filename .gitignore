@@ -71,8 +71,11 @@ output/
 tmp/
 temp/
 
-# Keep only intentionally committed synthetic samples
+# Generated datasets are local artifacts, not source code
 sample-data/generated/
+
+# Explicitly ignore generated output
+/sample-data/generated/
 
 # ---------------------------------------------------------
 # Kafka local runtime artifacts
