@@ -1,0 +1,12 @@
+{
+  "dataset": "eligibility",
+  "delivery_type": "INCREMENTAL",
+  "baseline_date": "2026-10-17",
+  "delivery_date": null,
+  "random_seed": 42,
+  "operations": {
+    "INSERT": 100,
+    "UPDATE": 150,
+    "DELETE": 50
+  }
+}
