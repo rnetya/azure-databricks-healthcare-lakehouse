@@ -4,7 +4,8 @@ import argparse
 import logging
 from pathlib import Path
 
-from data_generation.config import load_config
+from data_generation.config import get_output_directory, load_config
+from data_generation.eligibility import generate_eligibility
 from data_generation.generator import GeneratorEngine
 from data_generation.member import generate_member
 
@@ -62,6 +63,24 @@ def main(argv: list[str] | None = None) -> int:
             },
         ),
     )
+
+    if "eligibility" in config["datasets"]:
+        engine.register(
+            "eligibility",
+            lambda rng, output_dir, settings: generate_eligibility(
+                rng,
+                output_dir,
+                {
+                    **settings,
+                    "snapshot_date": config["snapshot_date"],
+                    "member_csv_path": str(
+                        get_output_directory(config, engine.project_root)
+                        / "member"
+                        / ("member_" + config["snapshot_date"].replace("-", "") + ".csv")
+                    ),
+                },
+            ),
+        )
 
     # Validate requested dataset.
     if args.dataset not in config["datasets"]:
