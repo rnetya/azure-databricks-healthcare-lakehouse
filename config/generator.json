@@ -1,4 +1,4 @@
-﻿{
+{
   "project": "azure-databricks-healthcare-lakehouse",
   "environment": "dev",
   "random_seed": 42,
@@ -12,6 +12,7 @@
     },
     "eligibility": {
       "enabled": true,
+      "record_count": 12000,
       "format": "parquet"
     },
     "claims": {
